@@ -1,393 +1,352 @@
 /* ============================================================
-   ZOMATO ORDERBOT — Professional Rich Theme
-   Luxury Dark · Gold Accents · Premium Feel
+   ZOMATO ORDERBOT — Professional Rich Theme v2
+   Luxury Dark · Gold Accents · Premium Restaurant Feel
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
-/* ── Root Variables ── */
+/* ── Design Tokens ── */
 :root {
-    --gold: #C9A84C;
-    --gold-light: #E8C97A;
-    --gold-dim: rgba(201, 168, 76, 0.12);
-    --gold-border: rgba(201, 168, 76, 0.25);
-    --bg: #0C0C0E;
-    --bg2: #131316;
-    --card: #18181C;
-    --surface: #1F1F25;
-    --border: rgba(255, 255, 255, 0.07);
-    --border-hover: rgba(255, 255, 255, 0.13);
-    --text: #F2EFE8;
-    --text-soft: #A09A8E;
-    --text-dim: #5C574F;
+  --gold:           #C9A84C;
+  --gold-light:     #E8C96A;
+  --gold-dim:       #8A6E30;
+  --gold-glow:      rgba(201, 168, 76, 0.10);
+  --dark-bg:        #0C0C0E;
+  --dark-card:      #131316;
+  --dark-surface:   #1C1C21;
+  --dark-raised:    #242429;
+  --border:         rgba(201, 168, 76, 0.14);
+  --border-soft:    rgba(255, 255, 255, 0.06);
+  --text-primary:   #F2EFE8;
+  --text-second:    #9A9590;
+  --text-muted:     #5A5752;
 }
 
 /* ── Global ── */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
+*, *::before, *::after { box-sizing: border-box; }
 
 body {
-    background: var(--bg) !important;
-    font-family: 'Inter', sans-serif !important;
-    color: var(--text) !important;
-    -webkit-font-smoothing: antialiased !important;
+  background: var(--dark-bg) !important;
+  font-family: 'Inter', sans-serif !important;
+  color: var(--text-primary) !important;
 }
 
-#root {
-    background: var(--bg) !important;
-}
+#root { background: var(--dark-bg) !important; }
 
 /* Ambient glow */
 body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background:
-        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(201, 168, 76, 0.05) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 40% at 95% 95%, rgba(201, 168, 76, 0.03) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(201,168,76,0.04) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 60% at 100% 100%, rgba(192,57,43,0.025) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: 0;
 }
 
-/* Gold accent line at top */
+/* Gold hairline across top */
 body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, var(--gold) 40%, var(--gold-light) 60%, transparent 100%);
-    z-index: 9999;
-    opacity: 0.6;
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 5%, var(--gold) 35%, var(--gold-light) 50%, var(--gold) 65%, transparent 95%);
+  z-index: 9999;
 }
 
-/* ── Header / Navbar ── */
+/* ── Header ── */
 header,
 [class*="MuiAppBar"],
 nav {
-    background: rgba(12, 12, 14, 0.97) !important;
-    backdrop-filter: blur(24px) saturate(160%) !important;
-    border-bottom: 1px solid var(--border) !important;
-    box-shadow: 0 1px 0 var(--gold-border) !important;
+  background: rgba(12,12,14,0.97) !important;
+  backdrop-filter: blur(24px) !important;
+  border-bottom: 1px solid var(--border) !important;
+  box-shadow: 0 1px 0 rgba(201,168,76,0.07) !important;
 }
 
 header h1,
-header [class*="MuiTypography-h"],
-[class*="app-title"] {
-    font-family: 'Playfair Display', serif !important;
-    font-weight: 600 !important;
-    font-size: 18px !important;
-    color: var(--gold-light) !important;
-    letter-spacing: 0.01em !important;
+header [class*="MuiTypography-h"] {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 600 !important;
+  color: var(--gold-light) !important;
+  letter-spacing: 0.02em !important;
 }
 
-/* ── Chat Area ── */
-main,
-[class*="MuiContainer"],
-[class*="chat-container"] {
-    background: transparent !important;
-}
-
-/* ── Welcome / README screen ── */
+/* ── README / Welcome ── */
 [class*="readme"],
 [class*="Readme"],
 .markdown-body {
-    background: var(--card) !important;
-    border: 1px solid var(--border) !important;
-    border-top: 1px solid var(--gold-border) !important;
-    border-radius: 16px !important;
-    padding: 36px !important;
-    color: var(--text-soft) !important;
-    font-family: 'Inter', sans-serif !important;
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5) !important;
+  background: var(--dark-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 16px !important;
+  padding: 32px 36px !important;
+  color: var(--text-primary) !important;
+  font-family: 'Inter', sans-serif !important;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.45), inset 0 1px 0 rgba(201,168,76,0.08) !important;
 }
 
 .markdown-body h1 {
-    font-family: 'Playfair Display', serif !important;
-    font-weight: 700 !important;
-    font-size: 26px !important;
-    color: var(--text) !important;
-    letter-spacing: -0.01em !important;
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 700 !important;
+  font-size: 24px !important;
+  color: var(--gold-light) !important;
+  letter-spacing: 0.01em !important;
+  border-bottom: 1px solid var(--border) !important;
+  padding-bottom: 10px !important;
+  margin-bottom: 18px !important;
 }
 
 .markdown-body h2 {
-    font-family: 'Playfair Display', serif !important;
-    font-weight: 600 !important;
-    color: var(--gold-light) !important;
-    font-size: 13px !important;
-    letter-spacing: 0.1em !important;
-    text-transform: uppercase !important;
-    margin-top: 28px !important;
-    padding-bottom: 8px !important;
-    border-bottom: 1px solid var(--border) !important;
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 600 !important;
+  color: var(--gold) !important;
+  font-size: 15px !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  margin-top: 22px !important;
+  margin-bottom: 8px !important;
 }
 
 .markdown-body li {
-    color: var(--text-soft) !important;
-    font-size: 14px !important;
-    line-height: 1.85 !important;
+  color: var(--text-second) !important;
+  line-height: 1.85 !important;
+  font-size: 13.5px !important;
 }
 
-.markdown-body li::marker {
-    color: var(--gold) !important;
-}
+.markdown-body li strong,
+.markdown-body strong { color: var(--text-primary) !important; font-weight: 600 !important; }
 
-.markdown-body strong {
-    color: var(--text) !important;
-    font-weight: 600 !important;
-}
-
-.markdown-body p {
-    color: var(--text-soft) !important;
-    line-height: 1.75 !important;
-    font-size: 14px !important;
-}
-
-/* ── Messages ── */
+/* ── Chat Messages ── */
 [class*="message"],
 [class*="Message"] {
-    font-family: 'Inter', sans-serif !important;
-    animation: msgIn 0.28s cubic-bezier(0.22, 1, 0.36, 1) both !important;
+  font-family: 'Inter', sans-serif !important;
+  animation: msgIn 0.28s cubic-bezier(0.22, 1, 0.36, 1) both !important;
 }
 
 @keyframes msgIn {
-    from {
-        opacity: 0;
-        transform: translateY(6px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Bot bubble */
+/* Bot bubble — gold left accent */
 [class*="assistant"] [class*="message-content"],
 [class*="bot"] [class*="content"] {
-    background: var(--card) !important;
-    border: 1px solid var(--border) !important;
-    border-left: 2px solid var(--gold) !important;
-    border-radius: 2px 14px 14px 14px !important;
-    color: var(--text) !important;
-    padding: 14px 18px !important;
-    line-height: 1.72 !important;
-    font-size: 14.5px !important;
-    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.35) !important;
+  background: var(--dark-card) !important;
+  border: 1px solid var(--border-soft) !important;
+  border-left: 2px solid var(--gold-dim) !important;
+  border-radius: 2px 14px 14px 14px !important;
+  color: var(--text-primary) !important;
+  padding: 14px 18px !important;
+  font-size: 14px !important;
+  line-height: 1.78 !important;
+  box-shadow: 0 3px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.025) !important;
 }
 
-/* User bubble */
+/* User bubble — warm dark surface with gold border */
 [class*="user"] [class*="message-content"],
 [class*="human"] [class*="content"] {
-    background: var(--surface) !important;
-    border: 1px solid var(--border-hover) !important;
-    border-right: 2px solid var(--gold) !important;
-    border-radius: 14px 2px 14px 14px !important;
-    color: var(--text) !important;
-    padding: 14px 18px !important;
-    font-size: 14.5px !important;
-    line-height: 1.72 !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+  background: var(--dark-surface) !important;
+  border: 1px solid rgba(201,168,76,0.22) !important;
+  border-radius: 14px 2px 14px 14px !important;
+  color: var(--text-primary) !important;
+  padding: 13px 17px !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.28) !important;
+}
+
+/* Food images inside messages */
+[class*="message"] img,
+[class*="element"] img {
+  border-radius: 10px !important;
+  border: 1px solid var(--border) !important;
+  max-width: 180px !important;
+  margin: 6px 4px 0 !important;
+  object-fit: cover !important;
+  transition: transform 0.2s ease !important;
+}
+
+[class*="message"] img:hover,
+[class*="element"] img:hover {
+  transform: scale(1.04) !important;
 }
 
 /* ── Avatar ── */
 [class*="avatar"],
 [class*="Avatar"] {
-    background: var(--surface) !important;
-    border: 1px solid var(--gold-border) !important;
-    color: var(--gold) !important;
-    font-family: 'Playfair Display', serif !important;
-    font-weight: 600 !important;
+  background: linear-gradient(135deg, #1C1C21, #2A2A30) !important;
+  border: 1px solid var(--border) !important;
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 600 !important;
+  color: var(--gold) !important;
+  font-size: 13px !important;
 }
 
 /* ── Input Box ── */
 [class*="MuiInputBase"],
 [class*="chat-input"],
 textarea {
-    background: var(--card) !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 12px !important;
-    color: var(--text) !important;
-    font-family: 'Inter', sans-serif !important;
-    font-size: 14.5px !important;
-    transition: border-color 0.2s, box-shadow 0.2s !important;
+  background: var(--dark-surface) !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  border-radius: 12px !important;
+  color: var(--text-primary) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
 }
 
 [class*="MuiInputBase"]:focus-within,
 textarea:focus {
-    border-color: var(--gold) !important;
-    box-shadow: 0 0 0 3px var(--gold-dim), 0 4px 20px rgba(0, 0, 0, 0.3) !important;
-    outline: none !important;
-    background: var(--surface) !important;
+  border-color: var(--gold-dim) !important;
+  box-shadow: 0 0 0 3px var(--gold-glow) !important;
+  outline: none !important;
 }
 
 textarea::placeholder,
 input::placeholder {
-    color: var(--text-dim) !important;
-    font-weight: 300 !important;
+  color: var(--text-muted) !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.01em !important;
 }
 
 /* ── Send Button ── */
 button[type="submit"],
 [class*="send"],
 [class*="Submit"] {
-    background: var(--gold) !important;
-    border: none !important;
-    border-radius: 10px !important;
-    color: #0C0C0E !important;
-    transition: background 0.2s, transform 0.15s, box-shadow 0.2s !important;
+  background: linear-gradient(135deg, #9A7828, #C9A84C) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  color: #0C0C0E !important;
+  font-weight: 600 !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
 }
 
 button[type="submit"]:hover,
 [class*="send"]:hover {
-    background: var(--gold-light) !important;
-    transform: scale(1.04) !important;
-    box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 5px 20px rgba(201,168,76,0.28) !important;
 }
 
-/* ── Sidebar ── */
+/* ── Sidebar — chat history ── */
 [class*="sidebar"],
 [class*="Sidebar"],
 [class*="drawer"],
 [class*="Drawer"] {
-    background: var(--bg2) !important;
-    border-right: 1px solid var(--border) !important;
+  background: var(--dark-card) !important;
+  border-right: 1px solid var(--border) !important;
 }
 
 [class*="thread"],
 [class*="Thread"] {
-    border-radius: 8px !important;
-    transition: background 0.15s !important;
-    color: var(--text-soft) !important;
+  border-radius: 8px !important;
+  transition: background 0.15s !important;
+  font-size: 13px !important;
+  font-family: 'Inter', sans-serif !important;
 }
 
-[class*="thread"]:hover {
-    background: var(--surface) !important;
-    color: var(--text) !important;
+[class*="thread"]:hover,
+[class*="Thread"]:hover {
+  background: var(--dark-surface) !important;
 }
 
 [class*="thread"][class*="active"],
-[class*="Thread"][class*="selected"] {
-    background: var(--surface) !important;
-    border-left: 2px solid var(--gold) !important;
-    color: var(--text) !important;
+[class*="thread"][class*="selected"] {
+  background: var(--dark-raised) !important;
+  border-left: 2px solid var(--gold) !important;
 }
 
-/* ── MUI Paper ── */
+[class*="pastChats"],
+[class*="history"] {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--gold) !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+}
+
+/* ── New Chat Button ── */
+[class*="newChat"],
+[class*="NewChat"] {
+  background: var(--dark-raised) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  color: var(--text-second) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  transition: background 0.15s, color 0.15s !important;
+}
+
+[class*="newChat"]:hover {
+  background: var(--dark-surface) !important;
+  color: var(--gold) !important;
+  border-color: var(--border) !important;
+}
+
+/* ── MUI Paper / Cards ── */
 [class*="MuiPaper"] {
-    background: var(--card) !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 14px !important;
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5) !important;
+  background: var(--dark-card) !important;
+  border: 1px solid var(--border-soft) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5) !important;
 }
 
 /* ── Buttons ── */
 [class*="MuiButton-contained"] {
-    background: var(--gold) !important;
-    color: #0C0C0E !important;
-    border-radius: 8px !important;
-    font-family: 'Inter', sans-serif !important;
-    font-weight: 500 !important;
-    box-shadow: none !important;
+  background: linear-gradient(135deg, #9A7828, #C9A84C) !important;
+  color: #0C0C0E !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  font-family: 'Inter', sans-serif !important;
+  letter-spacing: 0.02em !important;
 }
 
 [class*="MuiButton-outlined"] {
-    border-color: var(--gold-border) !important;
-    color: var(--gold) !important;
-    border-radius: 8px !important;
+  border-color: var(--border) !important;
+  color: var(--gold) !important;
+  border-radius: 8px !important;
 }
 
-/* ── Icon Buttons ── */
-[class*="MuiIconButton"] {
-    color: var(--text-soft) !important;
-    border-radius: 8px !important;
-    transition: color 0.15s, background 0.15s !important;
-}
-
-[class*="MuiIconButton"]:hover {
-    color: var(--gold) !important;
-    background: var(--gold-dim) !important;
-}
+/* ── Dividers ── */
+hr, [class*="MuiDivider"] { border-color: var(--border-soft) !important; }
 
 /* ── Code blocks ── */
-pre,
-code {
-    background: #0A0A0C !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 8px !important;
-    color: var(--gold-light) !important;
-    font-size: 13px !important;
-}
-
-/* ── Loading ── */
-[class*="loading"],
-[class*="typing"],
-[class*="spinner"] {
-    color: var(--gold) !important;
+pre, code {
+  background: rgba(0,0,0,0.45) !important;
+  border: 1px solid var(--border-soft) !important;
+  border-radius: 8px !important;
+  color: var(--gold-light) !important;
+  font-size: 13px !important;
 }
 
 /* ── Scrollbar ── */
-::-webkit-scrollbar {
-    width: 4px;
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.15); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(201,168,76,0.35); }
+
+/* ── Watermark ── */
+[class*="watermark"],
+[class*="footer"] {
+  color: var(--text-muted) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 11px !important;
+  letter-spacing: 0.03em !important;
 }
 
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 99px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--gold);
+/* ── Loading / Step indicator ── */
+[class*="loading"],
+[class*="spinner"],
+[class*="Step"] {
+  color: var(--gold) !important;
+  font-size: 13px !important;
+  font-style: italic !important;
 }
 
 /* ── Selection ── */
 ::selection {
-    background: var(--gold-dim) !important;
-    color: var(--text) !important;
-}
-
-/* ── Watermark ── */
-[class*="watermark"],
-[class*="footer"],
-[class*="Footer"] {
-    color: var(--text-dim) !important;
-    font-size: 11px !important;
-    letter-spacing: 0.03em !important;
-}
-
-/* ── Dividers ── */
-hr,
-[class*="MuiDivider"] {
-    border-color: var(--border) !important;
-}
-
-/* ── Chips ── */
-[class*="MuiChip"] {
-    background: var(--surface) !important;
-    border: 1px solid var(--border) !important;
-    color: var(--text-soft) !important;
-    border-radius: 6px !important;
-    font-family: 'Inter', sans-serif !important;
-}
-
-/* ── Timestamp ── */
-[class*="timestamp"],
-[class*="time"] {
-    color: var(--text-dim) !important;
-    font-size: 11px !important;
-    font-weight: 300 !important;
-    letter-spacing: 0.03em !important;
-}
-
-/* ── Feedback ── */
-[class*="feedback"]:hover {
-    color: var(--gold) !important;
+  background: rgba(201,168,76,0.22) !important;
+  color: var(--text-primary) !important;
 }
