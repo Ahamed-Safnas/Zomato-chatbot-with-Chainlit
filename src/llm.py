@@ -46,3 +46,4 @@ def ask_order(messages, temperature=0.5):
 
     raw = response.choices[0].message.content
     return _strip_thinking(raw)
+    
